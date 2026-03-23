@@ -24,6 +24,10 @@ class myvector{
             other.data=nullptr ;
             other.size_=0,other.capacity_=0;
         }
+        template<typename... Args>
+        void emplace_back(Args&&... args){
+            push_back(T(std::forward<Args>(args)...));
+        }
         myvector& operator=(const myvector &other){
             if(this!=&other){
                 delete[]data ;
